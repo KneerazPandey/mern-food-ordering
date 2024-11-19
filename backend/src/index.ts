@@ -2,15 +2,14 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import 'dotenv/config';
+import myUserRoute from './routes/MyUserRoutes';
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.get('/test', (req: Request, res: Response) => {
-    res.json({message: 'This is simple message'});
-});
+app.use('/api/my/user', myUserRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () =>{
